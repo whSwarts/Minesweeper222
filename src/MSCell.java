@@ -1,6 +1,7 @@
 /**
  * Created by Willem Swarts on 9/9/2016.
  */
+import java.util.Random;
 public class MSCell
 {
     private boolean revealed;
@@ -12,7 +13,7 @@ public class MSCell
 
     public MSCell() {
         this.revealed = setRevealed();
-        this.bomb = setBomb();
+        this.bomb = isBomb();
         this.value = setValue();
         this.flagged = setFlagged();
     }
@@ -25,7 +26,7 @@ public class MSCell
 //    public boolean isRevealed()
 //    public void setFlagged ()
 //    public boolean isFlagged()
-    public void setBomb()
+    public void setBomb(int field[][])
     {
 
     }
