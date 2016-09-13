@@ -1,7 +1,9 @@
 /**
  * Created by Willem Swarts on 9/9/2016.
  */
+
 import java.util.Random;
+import java.util.Arrays;
 public class MSCell
 {
     private boolean revealed;
@@ -11,11 +13,12 @@ public class MSCell
     // constructor to initialise
     //variables
 
-    public MSCell() {
-        this.revealed = setRevealed();
-        this.bomb = isBomb();
-        this.value = setValue();
-        this.flagged = setFlagged();
+    public MSCell()
+    {
+        this.revealed = false;
+        this.bomb = false;
+        this.value = 0;
+        this.flagged = false;
     }
 
     // accessor and mutators
@@ -26,14 +29,54 @@ public class MSCell
 //    public boolean isRevealed()
 //    public void setFlagged ()
 //    public boolean isFlagged()
-    public void setBomb(int field[][])
+    public void setBomb()
     {
 
+        this.bomb = true;
+
     }
-//    public boolean isBomb()
-//    public void setValue(int v)
-//    public int getValue()
-//    public String toString() // mark BOMB!
+    public boolean isBomb(MSCell[][] field , int dimension) //loop through array. if bomb == true, return true, else return false.
+    {
+        int y =0;
+        for(int i =0;i <field.length ; i++)
+        {
+            for(int j = 0; j< field[dimension].length;j++)
+            {
+                if (bomb == true) {
+                    y = 1;
+                }
+                else{y=-1;}
+            }
+        }
+        if(y>0)
+        {
+            return true;
+        }
+        else {return false;}
+    }
+    public void setValue(MSCell[][] field, int dimension)
+    {
+        if(!isBomb( field, dimension))
+        {
+            value = 0;
+        }
+    }
+
+    public int getValue()
+    {
+        return value;
+    }
+
+//    @Override
+    public String toString(MSCell[][] field,int dimension)
+    {
+        if(isBomb(field, dimension))
+        {
+            return "\tX";
+        }
+        else{return  "\t"+getValue();}
+    }
+
 //
 // this method is crucial!
 //Here we overwrite the
