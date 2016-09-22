@@ -1,14 +1,25 @@
-/**
- * Created by Willem Swarts on 9/12/2016.
- */
-import java.util.Scanner;
-public class MinesweeperTEST
+public class TestMS 
 {
-    public static void main(String[] args)
-    {
-        Scanner keyboard = new Scanner(System.in);
-        int column = 9;
-        int width = 9;
+ public static void main (String[] args )
+ {
+	 int ROWS = 0;
+	 int COLS = 0;
+	 int BOMBS  =0;
+	 
+	if (args.length > 0) 
+	{
+		try 
+		{
+			 ROWS = Integer.parseInt(args[0]);
+			 COLS = Integer.parseInt(args[1]);
+			 BOMBS = Integer.parseInt(args[2]);
+		} catch (NumberFormatException e)
+		{
+			System.err.println("Arguments must be an integer.");
+			System.exit(1);
+		}
 
-    }
+	}
+	MineField testField= new MineField (ROWS,COLS,BOMBS);
+ }
 }
